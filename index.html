@@ -25,7 +25,7 @@
       --bgColor: #041c2b;
       --shortTextColor: #ffde59;
       --longTextColor: #ccebe8;
-      --fadedAccentColor: #ccebe833;
+      --fadedAccentColor: #ccebe850;
       --linkColor: var(--shortTextColor);
       --linkHoverColor: #f0e9cb;
       --linkVisitedColor: var(--linkColor);
@@ -61,6 +61,10 @@
       border: 0;
       height: 2pt;
       background-color: var(--fadedAccentColor);
+    }
+
+    img {
+      border: 0px solid black;
     }
 
     a {
@@ -113,11 +117,10 @@
       align-items: center;
     }
 
-
     #nameplate h1 {
-      font-size: 4em;
-      letter-spacing: 1vw;
-      line-height: .9em;
+      font-size: clamp(3em, 3.5em, 4em);
+      letter-spacing: 1%;
+      text-shadow: 9px 7px 0px var(--fadedAccentColor);
     }
 
     #nameplate h2 {
@@ -127,8 +130,10 @@
     }
 
     #job-plate {
-      width: 75%;
-      height: 2em;
+      position: relative;
+      top: -5%;
+      width: 60%;
+      height: 1.8em;
       border-radius: 1em;
       background: linear-gradient(to right, var(--shortTextColor), #ff914d);
       font-size: 2em;
@@ -145,15 +150,22 @@
       margin-right: 0.25em;
     }
 
+    #job-plate a {
+      color: var(--bgColor);
+    }
+
     #home-details {
       position: relative;
       display: block;
+      top: -2%;
       width: 70%;
+      font-weight: 400;
     }
 
     #home-details p {
       margin: 0;
       padding: 0;
+      padding-bottom: .7em;
     }
 
     #home-links {
@@ -161,12 +173,11 @@
       text-align: left;
       width: 50%;
       line-height: 1.5em;
-      font-weight: bolder;
     }
 
     #contact-label {
       text-align: center;
-      font-size: 0.6em;
+      font-size: 0.8em;
       color: var(--longTextColor);
     }
 
@@ -182,7 +193,6 @@
       height: 2em;
       margin-right: 0.25em;
       margin-bottom: 0.25em;
-      border: 0px solid black;
     }
 
     #video-wall {
@@ -212,7 +222,7 @@
     #about-container h1 {
       position: absolute;
       top: 0;
-      left: 0;
+      left: 0.1em;
       font-size: 8em;
     }
 
@@ -257,6 +267,11 @@
         max-width: 100%;
       }
 
+      #contact-options img {
+        margin-top: -.4em;
+        margin-left: 25%;
+      }
+
       #about-container {
         flex-direction: column;
         align-items: center;
@@ -265,7 +280,7 @@
       #about-blurb {
         width: 90%;
         font-size: 1em;
-        overflow:scroll;
+        overflow: scroll;
       }
 
       #portrait-area {
@@ -282,8 +297,12 @@
     <div id="nameplate">
       <h1>JOSEPH<br /><span class="size-bump">JACIR</span></h1>
       <div id="job-plate">
+
         <img src="images/game_icon.svg" />
+        <a href="https://docs.google.com/document/d/1WujgcZaMOJCN_bZOLB8cg4YN4ofbpPrOQddPW0pgyGg"
+          target="jj_resume">
         <h2>Sr. Software Engineer</h2>
+        </a>
       </div>
       <div id="home-details">
         <div id="home-links">
@@ -352,6 +371,6 @@
   <hr />
   <div class="page">
     <h1>PROJECTS</h1>
-  </div>  
-    
+  </div>
+
 </html>
