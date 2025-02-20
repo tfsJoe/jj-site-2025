@@ -47,6 +47,7 @@
     }
 
     body {
+      position: relative;
       background-color: var(--bgColor);
       color: var(--longTextColor);
       font-family: sans-serif;
@@ -83,6 +84,7 @@
     }
 
     .page {
+      position: relative;
       background-color: var(#0000FF25);
       display: flex;
       width: 100%;
@@ -92,15 +94,96 @@
     #nameplate {
       margin: auto;
       text-align: center;
-      font-size: 2em;
+      font-size: 3vh;
       font-weight: 100;
       color: var(--shortTextColor);
       width: 50%;
       height: 100%;
       display: flex;
       flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      text-indent: 0.2em;
+    }
+
+
+    #nameplate h1 {
+      font-size: 4em;
+      letter-spacing: 1vw;
+      line-height: .9em;
+    }
+
+    .size-bump {
+      font-size: 1.2em;
+    }
+
+    .size-shrink {
+      font-size: 0.8em;
+    }
+
+    #nameplate h2 {
+      font-size: 2.3vw;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    #job-plate {
+      width: 75%;
+      height: 2em;
+      border-radius: 1em;
+      background: linear-gradient(to right, var(--shortTextColor), #ff914d);
+      font-size: 2em;
+      display: flex;
       justify-content: center;
       align-items: center;
+      color: var(--bgColor);
+      font-weight: bold;
+    }
+
+    #job-plate img {
+      width: 1em;
+      height: 1em;
+      margin-right: 0.25em;
+    }
+
+    #home-details {
+      position: relative;
+      display: block;
+      width: 70%;
+    }
+
+    #home-details p {
+      margin: 0;
+      padding: 0;
+    }
+
+    #home-links {
+      display: block;
+      text-align: left;
+      width: 50%;
+      line-height: 1.5em;
+      font-weight: bolder;
+    }
+
+    #contact-label {
+      text-align: center;
+      font-size: 0.6em;
+      color: var(--longTextColor);
+    }
+
+    #contact-options {
+      position: absolute;
+      left: 62.5%;
+      top: 0;
+      text-align: left;
+    }
+
+    #contact-options img {
+      width: 2em;
+      height: 2em;
+      margin-right: 0.25em;
+      margin-bottom: 0.25em;
+      border: 0px solid black;
     }
 
     #video-wall {
@@ -116,14 +199,55 @@
       object-fit: cover;
     }
 
+    #about-container {
+      position: absolute;
+      display: flex;
+      width: 100%;
+      height: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    #portrait-area {
+      position: relative;
+      top: 2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+    }
+
+    #portrait-area img {
+      width: 50%;
+      max-width: 300px;
+    }
+
+    #about-blurb {
+      width: 40%;
+      text-indent: 2em;
+    }
+
     @media (max-aspect-ratio: 1/1) {
       .page {
         flex-direction: column;
       }
 
+      div {
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+      }
+
       #nameplate,
       #video-wall {
         width: 100%;
+        margin: 0.5em, 0
+      }
+
+      #nameplate h2 {
+        font-size: 2.5vh;
+        max-width: 100%;
       }
     }
   </style>
@@ -132,10 +256,32 @@
 <body>
   <a id="home"></a>
   <div class="page">
+
     <div id="nameplate">
-      <h1>JOSEPH<br>JACIR</h1>
-      <h2>Sr. Software Engineer</h2>
+      <h1>JOSEPH<br /><span class="size-bump">JACIR</span></h1>
+      <div id="job-plate">
+        <img src="images/game_icon.svg" />
+        <h2>Sr. Software Engineer</h2>
+      </div>
+      <div id="home-details">
+        <div id="home-links">
+          <p><a href="#about">About</a></p>
+          <p><a href="https://docs.google.com/document/d/1WujgcZaMOJCN_bZOLB8cg4YN4ofbpPrOQddPW0pgyGg"
+              target="jj_resume">Resume</a></p>
+          <p class="size-shrink"><a href="#projects">Projects overview</a></p>
+          <p><a href="https://www.trickyfast.com/author/jjacir/" target="jj_articles">Articles</a></p>
+        </div>
+        <div id="contact-options">
+          <div id="contact-label">Contact</div><br />
+          <a href="mailto:joseph.andre.jacir@gmail.com"><img src="images/email_icon.svg" alt="email" /></a>
+          <a href="tel:+1-650-485-1849"><img src="images/phone_icon.svg" alt="phone" /></a>
+          <br />
+          <a href="https://www.linkedin.com/in/jjacir/" target="jj_linkedIn"><img src="images/linkedin-svgrepo-com.svg"
+              alt="LinkedIn" /></a>
+        </div>
+      </div>
     </div>
+
     <div id="video-wall">
       <video autoplay loop muted playsinline class="wall-video">
         <source src="video/cross-summoner.mp4" type="video/mp4">
@@ -149,13 +295,35 @@
       <video autoplay loop muted playsinline class="wall-video">
         <source src="video/tsum-tsum.mp4" type="video/mp4">
       </video>
-
     </div>
+
   </div>
 
   <a id="about"></a>
   <hr>
-  <h1>About</h1>
+  <div class="page">
+    <h1 style="font-size: 6em">ABOUT</h1>
+    <div id="about-container">
+      <div id="portrait-area">
+        <img src="images/joe_pixel_portrait.png" alt="Extraordinarily accurate pixel art depiction of me at work." />
+        <p style="font-weight: bolder; color: var(--shortTextColor);">Joe at work.</p>
+      </div>
+      <div id="about-blurb">
+
+        <p>Hi, I'm Joe. I'm a senior software developer in the Boston area, focusing on games.</p>
+
+        <p>I mostly work with Unity and C#. Other tools I use include Unreal, Pixi, Javascript / Typescript, the Adobe
+          suite, Autodesk 3ds Max, HTML, WebGL, Node, and many more as the situation demands.</p>
+
+        <p>Since 2007, I have developed and contributed to a number of code projects in the course of creating mobile,
+          console, and PC games, other software, and in making animation for film, web, broadcast, advertising, etc.</p>
+
+        <p>Since April 2015, I have been exclusively working as a developer, and in a senior role as a team lead since
+          November 2016. Previously, I split my time as an animator and technical artist. Much of the gameplay code I am
+          not at liberty to share here, but I briefly describe many of my projects here.</p>
+      </div>
+    </div>
+  </div>
 
   <a id="projects"></a>
 
