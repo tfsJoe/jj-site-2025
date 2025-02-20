@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Joseph Jacir</title>
+
+  <link rel="preconnect" href="https://rsms.me/">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+  <meta property="og:title" content="Joseph Jacir: Sr. Software Engineer">
+  <meta property="og:type" content="website">
+  <meta name="description" content="Software engineering portfolio for senior game engineer Joseph Jacir">
+  <meta property="og:description" content="Software engineering portfolio for senior game engineer Joseph Jacir">
+  <meta name="twitter:description" content="Software engineering portfolio for senior game engineer Joseph Jacir">
+  <meta property="og:url" content="https://josephjacir.com">
+  <meta property="og:image" content="https://josephjacir.com/images/joe_pixel_portrait.png">
+  <meta property="og:site_name" content="Joseph Jacir: Sr. Software Engineer">
+  <meta property="og:locale" content="en_US">
+
+
+  <style>
+    :root {
+      --bgColor: #041c2b;
+      --shortTextColor: #ffde59;
+      --longTextColor: #ccebe8;
+      --fadedAccentColor: #ccebe833;
+      --linkColor: var(--shortTextColor);
+      --linkHoverColor: #f0e9cb;
+      --linkVisitedColor: var(--linkColor);
+      --linkVisitedHoverColor: var(--linkHoverColor);
+      font-family: Inter, sans-serif;
+      font-feature-settings: 'liga' 1, 'calt' 1, 'ss02' 1, 'ss03' 1;
+    }
+
+    @supports (font-variation-settings: normal) {
+      :root {
+        font-family: InterVariable, sans-serif;
+        font-variation-settings: 'ss02' 1, 'ss03' 1;
+      }
+    }
+
+    html {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--bgColor);
+      color: var(--longTextColor);
+      font-family: sans-serif;
+      padding: 0px;
+      margin: 0px;
+      width: 100%;
+      height: 100%;
+    }
+
+    hr {
+      border: 0;
+      height: 2pt;
+      background-color: var(--fadedAccentColor);
+    }
+
+    a {
+      color: var(--linkColor);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: var(--linkHoverColor);
+    }
+
+    a:visited {
+      color: var(--linkVisitedColor);
+      transition: color 0.2s;
+    }
+
+    a:visited:hover {
+      color: var(--linkVisitedHoverColor);
+      transition: color 0.2s;
+    }
+
+    .page {
+      background-color: var(#0000FF25);
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    #nameplate {
+      margin: auto;
+      text-align: center;
+      font-size: 2em;
+      font-weight: 100;
+      color: var(--shortTextColor);
+      width: 50%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #video-wall {
+      display: flex;
+      flex-wrap: wrap;
+      width: 50%;
+    }
+
+    .wall-video {
+      flex: 1 1 50%;
+      width: 50%;
+      height: 50%;
+      object-fit: cover;
+    }
+
+    @media (max-aspect-ratio: 1/1) {
+      .page {
+        flex-direction: column;
+      }
+
+      #nameplate,
+      #video-wall {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a id="home"></a>
+  <div class="page">
+    <div id="nameplate">
+      <h1>JOSEPH<br>JACIR</h1>
+      <h2>Sr. Software Engineer</h2>
+    </div>
+    <div id="video-wall">
+      <video autoplay loop muted playsinline class="wall-video">
+        <source src="video/cross-summoner.mp4" type="video/mp4">
+      </video>
+      <video autoplay loop muted playsinline class="wall-video">
+        <source src="video/haven.mp4" type="video/mp4">
+      </video>
+      <video autoplay loop muted playsinline class="wall-video">
+        <source src="video/outer-wilds.mp4" type="video/mp4">
+      </video>
+      <video autoplay loop muted playsinline class="wall-video">
+        <source src="video/tsum-tsum.mp4" type="video/mp4">
+      </video>
+
+    </div>
+  </div>
+
+  <a id="about"></a>
+  <hr>
+  <h1>About</h1>
+
+  <a id="projects"></a>
+
+</html>
