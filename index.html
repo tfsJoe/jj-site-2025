@@ -314,6 +314,46 @@
       }
     }
   </style>
+
+  <script>
+/* In portrait mode only, check if we are scrolled to the top of the page. If so,
+wait a few seconds and check again. Then, if we are still at the top, scroll down by a little.
+*/
+let hasScrolled = false;
+let checkTimeout;
+const retestMs = 5000;
+const scrollAmount = 0.2;
+
+function checkOrientation() {
+    if (hasScrolled) return;
+    
+    if (window.innerHeight > window.innerWidth) { // Portrait mode
+        clearTimeout(checkTimeout);
+        checkTimeout = setTimeout(() => {
+            if (window.innerHeight > window.innerWidth) { // Still in portrait mode
+                scrollPage();
+            }
+        }, retestMs);
+    }
+}
+
+function scrollPage() {
+    if (hasScrolled) return;
+    hasScrolled = true;
+    
+    window.scrollBy({
+        top: window.innerHeight * 0.1, // Scroll down by 10%
+        behavior: "smooth"
+    });
+}
+
+window.addEventListener("resize", checkOrientation);
+window.addEventListener("orientationchange", checkOrientation);
+window.addEventListener("scroll", () => hasScrolled = true);
+
+document.addEventListener("DOMContentLoaded", checkOrientation);
+
+  </script>
 </head>
 
 <body>
