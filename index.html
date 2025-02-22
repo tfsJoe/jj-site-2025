@@ -343,16 +343,17 @@
 
     .card-text {
       position: relative;
-      width: 90%;
+      max-width: 90%;
       text-align: left;
       text-indent: 2em;
-      padding: .15em;
+      padding: .5em;
+      padding-left: 1em;
       background-color: #00000033;
+      overflow: scroll;
     }
 
     #blank-card {
       background-color: transparent;
-      min-width: 20%;
     }
 
     .floating-button {
@@ -447,6 +448,10 @@
 
       .card {
         min-width: 80%;
+      }
+
+      .card-text {
+        max-height: 60%;
       }
     }
   </style>
@@ -647,23 +652,36 @@
             <p>Through Tricky Fast, we partnered with Unity themselves to provide support and Unity Engine expertise to
               Mobius Digital, the developer.</p>
             <ul>
-              <li>I developed editor tools for artists and designers to optimize original assets for the Switch.</li>
-              <li>I made several integrations that would pass data back and forth between Unity and Digital Content
+              <li>Developed editor tools for artists and designers to optimize original assets for the Switch.</li>
+              <li>Made several integrations that would pass data back and forth between Unity and Digital Content
                 Creation tools, and corresponding scripts in those tools.</li>
-              <li>I also developed monitoring and reporting tools to keep track of statistics with regard to these
+              <li>Also developed monitoring and reporting tools to keep track of statistics with regard to these
                 optimizations.</li>
-              <li>I worked closely with Unity's engineers as well as the original developers.</li>
-              <li>I contributed to the technical design of further optimizations for the existing systems to accommodate the Switch, such as the unique challenges the planet system posed in object culling.</li>
+              <li>Worked closely with Unity's engineers as well as the original developers.</li>
+              <li>Contributed to the technical design of further optimizations for the existing systems to accommodate
+                the Switch, such as the unique challenges the planet system posed in object culling.</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="card">
         <video class="card-video" autoplay loop muted playsinline>
-          <source src="video/haven.mp4" type="video/mp4">
+          <source src="video/poptropica-worlds.mp4" type="video/mp4">
         </video>
         <div class="card-content">
-          Placeholder 1
+          <h2>Poptropica Worlds</h2>
+          <h3>2016-2017</h3>
+          <div class="card-text">
+            <p>Unity, C#. Team leadership, architecture, and technical documentation. Spine animation, GameSparks.</p>
+            <p>I was the lead engineer on the reboot of Poptropica, <a href="https://www.poptropica.com/worlds/play/" target="_poptropica">Poptropica Worlds</a></p>
+            <ul>
+              <li>Was lead engineer on a team of 11 internal and client engineers.</li>
+              <li>Performed code review and served as individual contributor.</li>
+              <li>Worked closely with the client team to develop a new architecture for the game.</li>
+              <li>Wrote and reviewed technical design documents for all game systems</li>
+              <li>Designed robust character customization and animation systems.</li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="card">
