@@ -285,7 +285,6 @@
       width: calc(100% - 6em);
       height: calc(100% - 6em);
       overflow-x: scroll;
-
     }
 
     .card {
@@ -295,6 +294,11 @@
       max-width: 70%;
       margin-right: 1em;
       padding: 0.667em;
+    }
+
+    #blank-card {
+      background-color: transparent;
+      min-width: 20%;
     }
 
     .floating-button {
@@ -386,6 +390,10 @@
         width: calc(100% - 2em);
         height: calc(100% - 3em);
       }
+
+      .card {
+        min-width: 80%;
+      }
     }
   </style>
 
@@ -405,18 +413,18 @@
         clearTimeout(checkTimeout);
         checkTimeout = setTimeout(() => {
           if (window.innerHeight > window.innerWidth) { // Still in portrait mode
-            scrollPage();
+            autoScrollPage();
           }
         }, retestMs);
       }
     }
 
-    function scrollPage() {
+    function autoScrollPage() {
       if (hasScrolled) return;
       hasScrolled = true;
 
       window.scrollBy({
-        top: window.innerHeight * 0.1, // Scroll down by 10%
+        top: window.innerHeight * 0.15,
         behavior: "smooth"
       });
     }
@@ -427,23 +435,6 @@
 
     document.addEventListener("DOMContentLoaded", checkOrientation);
 
-    // function scrollCarousel(direction) {
-    //   const carousel = document.getElementById("carousel");
-    //   const scrollAmount = 0.5; // Adjust this value to control the scroll speed
-
-    //   if (direction === "left") {
-    //     carousel.scrollBy({
-    //       left: -carousel.clientWidth * scrollAmount,
-    //       behavior: "smooth"
-    //     });
-    //   } else if (direction === "right") {
-    //     carousel.scrollBy({
-    //       left: carousel.clientWidth * scrollAmount,
-    //       behavior: "smooth"
-    //     });
-    //   }
-    // }
-
     var cards;
     var currentCard = 0;
     var carousel;
@@ -452,11 +443,14 @@
 
     function initCards() {
       cards = document.querySelectorAll(".card");
+      --cards.length; // Last card is blank, don't use it for scrolling.
       carousel = document.getElementById("carousel");
       if (!carousel) {
         console.error("Carousel not found");
         return;
       }
+      determineCurrentCard();
+      carousel.addEventListener("scroll", determineCurrentCard);
     }
 
     function nextCard() {
@@ -477,12 +471,22 @@
       const offset = cardRect.left - carouselRect.left;
 
 
-      console.log("scrollToCard", cardIndex, "offset", offset);
+      console.log("scrollToCard", cardIndex);
 
       carousel.scrollBy({
         left: offset,
         behavior: "smooth"
       });
+    }
+
+    function determineCurrentCard() {
+      const cardWidth = cards[0].getBoundingClientRect().width;
+      const scrollLeft = carousel.scrollLeft;
+      const newCard = Math.round(scrollLeft / cardWidth);
+      if (newCard !== currentCard) {
+        currentCard = newCard;
+        // console.log("currentCard", currentCard);
+      }
     }
   </script>
 </head>
@@ -567,20 +571,22 @@
     <div class="to-top"><a href="#home">&#8682;</a></div>
     <div id="carousel">
       <div class="card">
-        <a id="card00"></a>
         Placeholder 0
       </div>
       <div class="card">
-        <a id="card01"></a>
         Placeholder 1
       </div>
       <div class="card">
-        <a id="card02"></a>
         Placeholder 2
       </div>
       <div class="card">
-        <a id="card03"></a>
         Placeholder 3
+      </div>
+      <div class="card">
+        Placeholder 4
+      </div>
+      <div class="card" id="blank-card">
+        <!-- Blank card for scrolling -->
       </div>
     </div>
     <a id="prev" class="floating-button" onclick="prevCard();">
