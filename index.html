@@ -43,6 +43,7 @@
     html {
       width: 100%;
       height: 100%;
+      scroll-behavior: smooth;
     }
 
     body {
@@ -92,6 +93,20 @@
       display: flex;
       width: 100%;
       height: 100%;
+    }
+
+    .to-top {
+      position: absolute;
+      text-align: right;
+      top: 0;
+      margin-top: -0.05em;
+      right: 1em;
+      font-size: 2em;
+      font-weight: 900;
+    }
+
+    .to-top a {
+      color: var(--fadedAccentColor);
     }
 
     .size-bump {
@@ -246,6 +261,30 @@
       font-size: 1.45vw;
     }
 
+    #projects-page {
+      position: relative;
+      display: flex;
+      height: 100%;
+      width: 100%;
+    }
+
+    #projects-page h1 {
+      position: absolute;
+      margin: 0;
+      top: 0;
+      left: 0.1em;
+      font-size: 3em;
+    }
+
+    #carousel {
+      position: relative;
+      top: 3em;
+      left: 3em;
+      width: calc(100% - 6em);
+      height: calc(100% - 6em);
+      background-color: var(--fadedAccentColor);
+    }
+
     @media (max-aspect-ratio: 1/1) {
       .page {
         flex-direction: column;
@@ -312,46 +351,52 @@
         width: 90%;
         margin-top: -15%;
       }
+
+      #carousel {
+        left: 1em;
+        width: calc(100% - 2em);
+        height: calc(100% - 3em);
+      }
     }
   </style>
 
   <script>
-/* In portrait mode only, check if we are scrolled to the top of the page. If so,
-wait a few seconds and check again. Then, if we are still at the top, scroll down by a little.
-*/
-let hasScrolled = false;
-let checkTimeout;
-const retestMs = 5000;
-const scrollAmount = 0.2;
+    /* In portrait mode only, check if we are scrolled to the top of the page. If so,
+    wait a few seconds and check again. Then, if we are still at the top, scroll down by a little.
+    */
+    let hasScrolled = false;
+    let checkTimeout;
+    const retestMs = 5000;
+    const scrollAmount = 0.2;
 
-function checkOrientation() {
-    if (hasScrolled) return;
-    
-    if (window.innerHeight > window.innerWidth) { // Portrait mode
+    function checkOrientation() {
+      if (hasScrolled) return;
+
+      if (window.innerHeight > window.innerWidth) { // Portrait mode
         clearTimeout(checkTimeout);
         checkTimeout = setTimeout(() => {
-            if (window.innerHeight > window.innerWidth) { // Still in portrait mode
-                scrollPage();
-            }
+          if (window.innerHeight > window.innerWidth) { // Still in portrait mode
+            scrollPage();
+          }
         }, retestMs);
+      }
     }
-}
 
-function scrollPage() {
-    if (hasScrolled) return;
-    hasScrolled = true;
-    
-    window.scrollBy({
+    function scrollPage() {
+      if (hasScrolled) return;
+      hasScrolled = true;
+
+      window.scrollBy({
         top: window.innerHeight * 0.1, // Scroll down by 10%
         behavior: "smooth"
-    });
-}
+      });
+    }
 
-window.addEventListener("resize", checkOrientation);
-window.addEventListener("orientationchange", checkOrientation);
-window.addEventListener("scroll", () => hasScrolled = true);
+    window.addEventListener("resize", checkOrientation);
+    window.addEventListener("orientationchange", checkOrientation);
+    window.addEventListener("scroll", () => hasScrolled = true);
 
-document.addEventListener("DOMContentLoaded", checkOrientation);
+    document.addEventListener("DOMContentLoaded", checkOrientation);
 
   </script>
 </head>
@@ -408,6 +453,7 @@ document.addEventListener("DOMContentLoaded", checkOrientation);
   <hr />
   <div class="page" id="about-container">
     <h1>ABOUT</h1>
+    <div class="to-top"><a href="#home">&#8613;</a></div>
     <div id="portrait-area">
       <img src="images/joe_pixel_portrait.png" alt="Extraordinarily accurate pixel art depiction of me at work." />
       <p style="font-weight: bolder; color: var(--shortTextColor);">Joe at work.</p>
@@ -430,9 +476,12 @@ document.addEventListener("DOMContentLoaded", checkOrientation);
   </div>
 
   <a id="projects"></a>
-  <hr />
   <div class="page" id="projects-page">
     <h1>PROJECTS</h1>
+    <div class="to-top"><a href="#home">&#8613;</a></div>
+    <div id="carousel">
+      Placeholder
+    </div>
   </div>
 
 </html>
