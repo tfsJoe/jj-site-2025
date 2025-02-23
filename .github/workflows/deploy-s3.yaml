@@ -1,0 +1,27 @@
+name: Deploy to AWS S3 and Invalidate CloudFront Cache
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up AWS CLI
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_S3_DEPLOY_AND_CACHE_INVALIDATE }}
+          aws-region: us-east-1
+
+      - name: Sync files with S3
+        run: aws s3 sync ./ s3://josephjacir.com --delete
+
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation --distribution-id EQ694VIMUZ84S --paths "/*"
