@@ -362,20 +362,32 @@
     .floating-button {
       position: absolute;
       font-size: 3em;
+      padding: 5px;
       color: var(--shortTextColor);
       cursor: pointer;
-      transform: scaleY(2);
       z-index: 20;
     }
 
     #prev {
       top: 50%;
       left: 0;
+      transform: scaleX(-1);
     }
 
     #next {
       top: 50%;
       right: 0;
+    }
+
+    #vignette {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, #00000000 0%, #00000045 100%);
+      z-index: -20;
+      pointer-events: none;
     }
 
     @media (max-aspect-ratio: 1/1) {
@@ -835,11 +847,11 @@
       </div>
     </div>
     <a id="prev" class="floating-button" onclick="prevCard();">
-      <span>&#8672;</span>
+      <span>&#10140;</span>
     </a>
     <a id="next" class="floating-button" onclick="nextCard();">
-      <span>&#8674;</span>
+      <span>&#10140;</span>
     </a>
   </div>
-
+  <div id="vignette"></div>
 </html>
