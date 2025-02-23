@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Joseph Jacir</title>
 
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+
   <link rel="preconnect" href="https://rsms.me/">
   <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
 
@@ -25,6 +27,7 @@
       --shortTextColor: #ffde59;
       --longTextColor: #ccebe8;
       --fadedAccentColor: #ccebe850;
+      --mediumAccentColor: #ccebe899;
       --linkColor: var(--shortTextColor);
       --linkHoverColor: #f0e9cb;
       --linkVisitedColor: var(--linkColor);
@@ -338,7 +341,7 @@
       font-size: 1.5em;
       margin-left: 2em;
       margin-top: -1em;
-      color: var(--fadedAccentColor);
+      color: var(--mediumAccentColor);
     }
 
     .card-text {
@@ -503,14 +506,13 @@
     var nextButton;
 
     function initCards() {
-      cards = document.querySelectorAll(".card");
+      cards = Array.from(document.querySelectorAll(".card"));
       --cards.length; // Last card is blank, don't use it for scrolling.
       carousel = document.getElementById("carousel");
       if (!carousel) {
         console.error("Carousel not found");
         return;
       }
-      determineCurrentCard();
       carousel.addEventListener("scroll", determineCurrentCard);
       // Pause video of all cards
       cards.forEach(card => {
@@ -519,6 +521,8 @@
           video.pause();
         }
       });
+      determineCurrentCard();
+      cards[currentCard].querySelector(".card-video").play();
     }
 
     function nextCard() {
@@ -552,9 +556,10 @@
       const scrollLeft = carousel.scrollLeft;
       const newCard = Math.round(scrollLeft / cardWidth);
       if (newCard !== currentCard) {
-        cards[currentCard].querySelector(".card-video").pause();
+        const video = cards[currentCard].querySelector(".card-video");
+        video?.pause();
         currentCard = newCard;
-        cards[currentCard].querySelector(".card-video").play();
+        video?.play();
         // console.log("currentCard", currentCard);
       }
     }
@@ -567,7 +572,6 @@
     <div id="nameplate">
       <h1>JOSEPH<br /><span class="size-bump">JACIR</span></h1>
       <div id="job-plate">
-
         <img src="images/game_icon.svg" />
         <a href="https://docs.google.com/document/d/1WujgcZaMOJCN_bZOLB8cg4YN4ofbpPrOQddPW0pgyGg" target="jj_resume">
           <h2>Sr. Software Engineer</h2>
@@ -578,7 +582,7 @@
           <p><a href="#about">About</a></p>
           <p><a href="https://docs.google.com/document/d/1WujgcZaMOJCN_bZOLB8cg4YN4ofbpPrOQddPW0pgyGg"
               target="jj_resume">Resume</a></p>
-          <p class="size-shrink"><a href="#projects">Projects overview</a></p>
+          <p><a href="#projects">Projects</a></p>
           <p><a href="https://www.trickyfast.com/author/jjacir/" target="jj_articles">Articles</a></p>
         </div>
         <div id="contact-options">
@@ -630,7 +634,7 @@
         console, and PC games, other software, and in making animation for film, web, broadcast, advertising, etc.</p>
 
       <p>Since 2015, I have been exclusively working as a developer, and in a senior role as a team lead since
-        November 2016. Previously, I split my time as an animator and technical artist. I briefly describe many of <a
+        November 2016. Previously, I split my time as an animator and technical artist. I briefly describe some of <a
           href="#projects">my projects</a> here.</p>
     </div>
   </div>
@@ -701,21 +705,6 @@
       </div>
       <div class="card">
         <video class="card-video" autoplay loop muted playsinline>
-          <source src="video/treat-fighter.mp4" type="video/mp4">
-        </video>
-        <div class="card-content">
-          <h2>Treat Fighter</h2>
-          <h3>2017</h3>
-          <div class="card-text">
-            <p>Technical design, blockchain</p>
-            <p>Advised a team of our game designers and engineers on the technical aspects of blockchain
-              integration. Wrote and reviewed technical design documents.</p>
-            <p>Commissioned by Xaya for their blockchain.</p>
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <video class="card-video" autoplay loop muted playsinline>
           <source src="video/star-trek.mp4" type="video/mp4">
         </video>
         <div class="card-content">
@@ -732,7 +721,45 @@
       </div>
       <div class="card">
         <video class="card-video" autoplay loop muted playsinline>
-          <source src="video/cat-game-builder.mp4" type="video/mp4">
+          <source src="video/haven.mp4" type="video/mp4">
+        </video>
+        <div class="card-content">
+          <h2>Unleashed Games: Haven</h2>
+          <h3>2023-2024</h3>
+          <div class="card-text">
+            <p>Unity, C#</p>
+            <ul>
+              <li>Core systems developer</li>
+              <li>Editor tools for game designers</li>
+              <li>Worked with small and very agile team through very public prototyping process (live play streams
+                weekly)</li>
+              <li>Fluid simulation and VFX</li>
+              <li>This game is the brainchild of many of the original team behind World of Warcraft and Kingdoms of
+                Amalur.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <video class="card-video" autoplay loop muted playsinline>
+          <source src="video/treat-fighter.mp4" type="video/mp4">
+        </video>
+        <div class="card-content">
+          <h2>Treat Fighter</h2>
+          <h3>2017</h3>
+          <div class="card-text">
+            <ul>
+              <li>Technical design, blockchain</li>
+            <li>Advised a team of our game designers and engineers on the technical aspects of blockchain
+              integration. Wrote and reviewed technical design documents.</li>
+            <li>Commissioned by Xaya for their blockchain.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <video class="card-video" autoplay loop muted playsinline>
+          <source src="video/cat.mp4" type="video/mp4">
         </video>
         <div class="card-content">
           <h2>CAT Game Builder</h2>
@@ -745,6 +772,60 @@
               <li>Wrote technical documentation</li>
               <li>Created demo content for customers</li>
               <li>Released for sale on the Unity Asset Store</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <video class="card-video" autoplay loop muted playsinline>
+          <source src="video/frever.mp4" type="video/mp4">
+        </video>
+        <div class="card-content">
+          <h2>Frever</h2>
+          <h3>2022</h3>
+          <div class="card-text">
+            <p>Unity, C#</p>
+            <ul>
+              <li><a href="https://apps.apple.com/us/app/frever-dress-up-your-avatar/id1471858786"
+                  target="_frever-iOS">iOS</a> / <a
+                  href="https://play.google.com/store/apps/details?id=com.FriendFactory.Frever&hl=en-US">Android</a>
+                social app</li>
+              <li>Live multiplayer motion capture, live voice streaming</li>
+              <li>Development of new features for mature product</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <video class="card-video" autoplay loop muted playsinline>
+          <source src="video/savant.mp4" type="video/mp4">
+        </video>
+        <div class="card-content">
+          <h2>Savant home automation</h2>
+          <h3>2019</h3>
+          <div class="card-text">
+            <p>Unity, C#, AppleTV SDK with Xcode</p>
+            <ul>
+              <li>GUI dev team lead</li>
+              <li>Made AppleTV client for home automation controls using Unity</li>
+              <li>Architecture, technical design, hardware and camera integrations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <video class="card-video" autoplay loop muted playsinline>
+          <source src="video/chara-chat.mp4" type="video/mp4">
+        </video>
+        <div class="card-content">
+          <h2>Chara.Chat</h2>
+          <h3>2016-2020</h3>
+          <div class="card-text">
+            <p>C#, OpenAI GPT API, TypeScript, AWS Lambda</p>
+            <ul>
+              <li>Personal project. <a href="https://chara.chat" target="_chara-chat">Chara.Chat website here</a></li>
+              <li>Mod for Stardew Valley</li>
+              <li>Extends the game to allow player to have open-ended chats with NPCs</li>
             </ul>
           </div>
         </div>
