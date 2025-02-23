@@ -1,0 +1,2 @@
+aws s3 sync . s3://josephjacir.com --delete --exclude ".*"
+aws cloudfront create-invalidation --distribution-id EQ694VIMUZ84S --paths "/*"
