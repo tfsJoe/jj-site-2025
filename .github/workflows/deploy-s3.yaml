@@ -9,6 +9,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+      - name: Install LFS
+        run: sudo apt-get install git-lfs
+      
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -20,7 +23,7 @@ jobs:
           aws-region: us-east-1
 
       - name: Sync files with S3
-        run: aws s3 sync ./ s3://josephjacir.com --delete
+        run: aws s3 sync ./ s3://josephjacir.com --delete --exclude '.*'
 
       - name: Invalidate CloudFront Cache
         run: |
