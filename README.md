@@ -1,2 +1,2 @@
-# jj-site-2025
+# josephjacir.com
 Refresh of my personal site
